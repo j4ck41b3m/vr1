@@ -9,6 +9,7 @@ public class bolos : MonoBehaviour
     private AudioSource audi;
     public AudioClip strike;
     public int falllen;
+    public bool goal;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,23 +20,28 @@ public class bolos : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        foreach (Transform pin in pines)
+        /*foreach (Transform pin in pines)
         {
             if (pin.up.y < threshold)
                 ++falllen;
-        }
+        }*/
 
-        if (falllen >= 9)
+        
+
+        if (falllen >= 9 && goal == false)
         {
+
             print("SODAAAA");
+            goal = true;
+
             audi.PlayOneShot(strike);
         }
 
     }
 
-    void DetectarCaidos()
+    public void DetectarCaidos()
     {
-       
+      falllen++;
     }
 
     private void OnTriggerEnter(Collider other)
