@@ -32,9 +32,10 @@ public class bolos : MonoBehaviour
         {
 
             print("SODAAAA");
+            audi.PlayOneShot(strike);
+
             goal = true;
 
-            audi.PlayOneShot(strike);
         }
 
     }
