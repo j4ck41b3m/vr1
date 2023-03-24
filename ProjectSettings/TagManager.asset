@@ -6,6 +6,7 @@ TagManager:
   tags:
   - end
   - ball
+  - pin
   layers:
   - Default
   - TransparentFX
