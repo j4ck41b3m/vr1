@@ -34,7 +34,7 @@ public class bolos : MonoBehaviour
 
         puntuacion.text = falllen + "/10";
 
-        if (falllen >= 9 && goal == false)
+        if (falllen > 9 && goal == false)
         {
 
             print("SODAAAA");
