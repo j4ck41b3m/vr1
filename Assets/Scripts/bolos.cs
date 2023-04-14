@@ -8,7 +8,7 @@ public class bolos : MonoBehaviour
 {
     private AudioSource audi;
     public AudioClip strike;
-    public GameObject pines, spawn, conjunto, cleaner;
+    public GameObject pines, spawn, conjunto, cleaner, parti, partispawn;
     public int falllen;
     public bool goal;
     public TextMeshProUGUI puntuacion, mensaje;
@@ -40,8 +40,10 @@ public class bolos : MonoBehaviour
             print("SODAAAA");
             audi.PlayOneShot(strike);
             goal = true;
+            GameObject fx = Instantiate(parti, partispawn.transform.position, partispawn.transform.rotation);
             Invoke("Rewind", 4f);
             mensaje.text = "PLENO!!!";
+            Destroy(fx, 3.8f);
             Destroy(conjunto, 3f);
             anim.SetTrigger("clean");
 

@@ -19,6 +19,7 @@ public class individual : MonoBehaviour
         if (transform.up.y < 0.3 && fell ==false)
         {
             Call();
+            Destroy(gameObject, 0.3f);
         }
     }
 
