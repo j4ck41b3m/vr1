@@ -12,12 +12,13 @@ public class inputthingej : MonoBehaviour
     private List<UnityEngine.XR.InputDevice> dispositivosDetectados;
     bool triggerValue, primaryButton, primaryTouch, secondaryButton, secondaryTouch, gripButton, primary2DAxistouch, primary2DAxisclick;
 
-    bool isTracked, isTrackedG;
-    float gripsensi, triggersensi;
-    private Vector2 primary2DAxis;
-    Vector3 posicion, posicionG;
-    Quaternion rotacion, rotacionG;
-    Vector3 velocity, angularVelocity, aceleracion, angularAceleracion, velocityG, angularVelocityG, aceleracionG, angularAceleracionG;
+    bool triggerValue1, primaryButton1, primaryTouch1, secondaryButton1, secondaryTouch1, gripButton1, primary2DAxistouch1, primary2DAxisclick1;
+    bool isTracked, isTracked1, isTrackedG;
+    float gripsensi, triggersensi, gripsensi1, triggersensi1;
+    private Vector2 primary2DAxis, primary2DAxis1;
+    Vector3 posicion, posicion1, posicionG;
+    Quaternion rotacion,rotacion1, rotacionG;
+    Vector3 velocity,velocity1, angularVelocity, angularVelocity1, aceleracion, aceleracion1, angularAceleracion, angularAceleracion1, velocityG, angularVelocityG, aceleracionG, angularAceleracionG;
 
     bool userPresence;
     Vector3 leftOjoPosition, rightOjoPosition, leftOjoVelocity, rightOjoVelocity, centerEyePos, centerEyeVel;
@@ -52,6 +53,18 @@ public class inputthingej : MonoBehaviour
         dispositivosDetectados[2].TryGetFeatureValue(UnityEngine.XR.CommonUsages.primary2DAxisClick, out primary2DAxisclick);
         dispositivosDetectados[2].TryGetFeatureValue(UnityEngine.XR.CommonUsages.primary2DAxisTouch, out primary2DAxistouch);
 
+        dispositivosDetectados[1].TryGetFeatureValue(UnityEngine.XR.CommonUsages.triggerButton, out triggerValue1); // gatillo
+        dispositivosDetectados[1].TryGetFeatureValue(UnityEngine.XR.CommonUsages.primary2DAxis, out primary2DAxis1);// joystick
+        dispositivosDetectados[1].TryGetFeatureValue(UnityEngine.XR.CommonUsages.primaryButton, out primaryButton1);// A o X
+        dispositivosDetectados[1].TryGetFeatureValue(UnityEngine.XR.CommonUsages.primaryTouch, out primaryTouch1);
+        dispositivosDetectados[1].TryGetFeatureValue(UnityEngine.XR.CommonUsages.secondaryTouch, out secondaryTouch1);// Y o B
+        dispositivosDetectados[1].TryGetFeatureValue(UnityEngine.XR.CommonUsages.secondaryButton, out secondaryButton1);
+        dispositivosDetectados[1].TryGetFeatureValue(UnityEngine.XR.CommonUsages.gripButton, out gripButton1);
+        dispositivosDetectados[1].TryGetFeatureValue(UnityEngine.XR.CommonUsages.grip, out gripsensi1);
+        dispositivosDetectados[1].TryGetFeatureValue(UnityEngine.XR.CommonUsages.trigger, out triggersensi1);
+        dispositivosDetectados[1].TryGetFeatureValue(UnityEngine.XR.CommonUsages.primary2DAxisClick, out primary2DAxisclick1);
+        dispositivosDetectados[1].TryGetFeatureValue(UnityEngine.XR.CommonUsages.primary2DAxisTouch, out primary2DAxistouch1);
+
         //comunes
         dispositivosDetectados[2].TryGetFeatureValue(UnityEngine.XR.CommonUsages.isTracked, out isTracked);
         dispositivosDetectados[2].TryGetFeatureValue(UnityEngine.XR.CommonUsages.devicePosition, out posicion);
@@ -60,6 +73,14 @@ public class inputthingej : MonoBehaviour
         dispositivosDetectados[2].TryGetFeatureValue(UnityEngine.XR.CommonUsages.deviceAngularVelocity, out angularVelocity);
         dispositivosDetectados[2].TryGetFeatureValue(UnityEngine.XR.CommonUsages.deviceAcceleration, out aceleracion);
         dispositivosDetectados[2].TryGetFeatureValue(UnityEngine.XR.CommonUsages.deviceAngularAcceleration, out angularAceleracion);
+
+        dispositivosDetectados[1].TryGetFeatureValue(UnityEngine.XR.CommonUsages.isTracked, out isTracked1);
+        dispositivosDetectados[1].TryGetFeatureValue(UnityEngine.XR.CommonUsages.devicePosition, out posicion1);
+        dispositivosDetectados[1].TryGetFeatureValue(UnityEngine.XR.CommonUsages.deviceRotation, out rotacion1);
+        dispositivosDetectados[1].TryGetFeatureValue(UnityEngine.XR.CommonUsages.deviceVelocity, out velocity1);
+        dispositivosDetectados[1].TryGetFeatureValue(UnityEngine.XR.CommonUsages.deviceAngularVelocity, out angularVelocity1);
+        dispositivosDetectados[1].TryGetFeatureValue(UnityEngine.XR.CommonUsages.deviceAcceleration, out aceleracion1);
+        dispositivosDetectados[1].TryGetFeatureValue(UnityEngine.XR.CommonUsages.deviceAngularAcceleration, out angularAceleracion1);
 
 
         //Gafas
@@ -86,7 +107,22 @@ public class inputthingej : MonoBehaviour
 
         if (monitorEncendido)
         {
-            txtMonitorDerecha.text = "Input MandoDerecho" +
+            txtMonitorIzquierda.text = "Input Mando Izquierdo" +
+                       "\n moviendo el joystick" + primary2DAxis1 +
+                       "\n Tienes pulsado trigger " + triggerValue1 + triggersensi1 +
+                       "\n tienes pulsado A " + primaryButton1 +
+                       "\n tienes pulsado B " + secondaryButton1 +
+                       "\n tienes el dedo sobre la A " + primaryTouch1 +
+                       "\n tienes el dedo sobre la B " + secondaryTouch1 +
+                       "\n tienes pulsado grip " + gripButton1 + gripsensi1 +
+                       "\n tienes el dedo en el joyystick " + primary2DAxistouch1 +
+                       "\n tienes pulsado el joystick " + primary2DAxisclick1 +
+                       "\n Dispositivo trackeado " + isTracked1 +
+                       "\n Posiocion " + posicion1 + " Rotacion " + rotacion1 +
+                       "\n Velocidad " + velocity1 + "Velocidad Angular " + angularVelocity1 +
+                       "\n Aceleracion " + aceleracion1 + "Aceleracion Angular " + angularAceleracion1;
+
+            txtMonitorDerecha.text = "Input Mando Derecho" +
                        "\n moviendo el joystick" + primary2DAxis +
                        "\n Tienes pulsado trigger " + triggerValue + triggersensi +
                        "\n tienes pulsado A " + primaryButton +
@@ -101,7 +137,7 @@ public class inputthingej : MonoBehaviour
                        "\n Velocidad " + velocity + "Velocidad Angular " + angularVelocity +
                        "\n Aceleracion " + aceleracion + "Aceleracion Angular " + angularAceleracion;
 
-            txtMonitorIzquierda.text = "Inputs Gafas" +
+            txtMonitorCentral.text = "Inputs Gafas" +
                                        "\nTienes las gafas puestas " + userPresence +
                                        "\n Posicion del ojo Izquierdo " + leftOjoPosition + "Rotacion" + leftOjoRotation +
                                        "\n Velocidad ojo Izquierdo " + leftOjoVelocity +
@@ -113,6 +149,7 @@ public class inputthingej : MonoBehaviour
                                        "\n Posiocion " + posicionG + " Rotacion " + rotacionG +
                                        "\n Velocidad " + velocityG + "Velocidad Angular " + angularVelocityG +
                                        "\n Aceleracion " + aceleracionG + "Aceleracion Angular " + angularAceleracionG;
+            
         }
         else
         {
@@ -124,7 +161,7 @@ public class inputthingej : MonoBehaviour
 
         if (velocidadgafastoggle.isOn)
         {
-            velocidadgafas.text = "Velovidad: " + velocityG;
+            velocidadgafas.text = "Velocidad: " + velocityG;
         }
         else
         {
